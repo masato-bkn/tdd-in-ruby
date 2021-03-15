@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe 'test' do
+require_relative './../dollar'
+
+RSpec.describe 'Dollar' do
   it do
-    expect(1 + 1).to eq(2)
+    five = Dollar.new(5)
+    five.times(2)
+    expect(five.amount).to eq(10)
   end
 end
