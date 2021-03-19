@@ -10,4 +10,9 @@ class Dollar
   def times(multiplier)
     Dollar.new(@amount * multiplier)
   end
+
+  def equal(money)
+    return false unless money.instance_of?(Dollar)
+    amount == money.amount
+  end
 end
