@@ -6,10 +6,10 @@ RSpec.describe 'Dollar' do
   it '正しく計算できること' do
     five = Dollar.new(5)
     product = five.times(2)
-    expect(product.amount).to eq(10)
+    expect(product.equal(Dollar.new(10))).to be_truthy
 
     product = five.times(3)
-    expect(product.amount).to eq(15)
+    expect(product.equal(Dollar.new(15))).to be_truthy
   end
 
   it '比較できること' do
