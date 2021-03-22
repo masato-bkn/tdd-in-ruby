@@ -18,6 +18,10 @@ RSpec.describe 'Dollar' do
     expect(Dollar.new(5).equal(Dollar.new(6))).to be_falsey
     expect(Dollar.new(5).equal(5)).to be_falsey
   end
+
+  it do
+    expect(Dollar.new(5).equal(Franc.new(5))).to be_falsey
+  end
 end
 
 RSpec.describe 'Franc' do
@@ -34,5 +38,9 @@ RSpec.describe 'Franc' do
     expect(Franc.new(5).equal(Franc.new(5))).to be_truthy
     expect(Franc.new(5).equal(Franc.new(6))).to be_falsey
     expect(Franc.new(5).equal(5)).to be_falsey
+  end
+
+  it do
+    expect(Dollar.new(5).equal(Franc.new(5))).to be_falsey
   end
 end
