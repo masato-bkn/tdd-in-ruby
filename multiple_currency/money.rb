@@ -3,10 +3,11 @@
 require_relative 'dollar'
 
 class Money
-  attr_accessor :amount
+  attr_reader :amount, :currency
 
-  def initialize(amount)
+  def initialize(amount, currency)
     @amount = amount
+    @currency = currency
   end
 
   def equal(money)

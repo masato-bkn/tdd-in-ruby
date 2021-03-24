@@ -22,6 +22,10 @@ RSpec.describe 'Dollar' do
   it do
     expect(Money.dollar(5).equal(Money.franc(5))).to be_falsey
   end
+
+  it do
+    expect(Money.dollar(5).currency).to eq('USD')
+  end
 end
 
 RSpec.describe 'Franc' do
@@ -42,5 +46,9 @@ RSpec.describe 'Franc' do
 
   it do
     expect(Money.dollar(5).equal(Money.franc(5))).to be_falsey
+  end
+
+  it do
+    expect(Money.franc(5).currency).to eq('CHF')
   end
 end
