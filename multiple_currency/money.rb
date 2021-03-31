@@ -16,6 +16,13 @@ class Money
     amount == money.amount && money.instance_of?(self.class)
   end
 
+  def times(multiplier)
+    case currency
+    when 'USD' then Money.dollar(@amount * multiplier)
+    when 'CHF' then Money.franc(@amount * multiplier)
+    end
+  end
+
   def self.dollar(amount)
     Dollar.new(amount)
   end
