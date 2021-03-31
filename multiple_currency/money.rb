@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'dollar'
-
 class Money
   attr_reader :amount, :currency
 
@@ -10,10 +8,14 @@ class Money
     @currency = currency
   end
 
-  def equal(money)
-    return false unless money.is_a?(Money)
+  class << self
+    def dollar(amount)
+      Money.new(amount, 'USD')
+    end
 
-    currency == money.currency && amount == money.amount
+    def franc(amount)
+      Money.new(amount, 'CHF')
+    end
   end
 
   def times(multiplier)
@@ -23,11 +25,9 @@ class Money
     end
   end
 
-  def self.dollar(amount)
-    Money.new(amount, 'USD')
-  end
+  def equal(money)
+    return false unless money.is_a?(Money)
 
-  def self.franc(amount)
-    Money.new(amount, 'CHF')
+    currency == money.currency && amount == money.amount
   end
 end
