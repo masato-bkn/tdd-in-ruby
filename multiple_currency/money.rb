@@ -13,7 +13,7 @@ class Money
   def equal(money)
     return false unless money.is_a?(Money)
 
-    amount == money.amount && money.instance_of?(self.class)
+    currency == money.currency && amount == money.amount
   end
 
   def times(multiplier)
@@ -24,10 +24,10 @@ class Money
   end
 
   def self.dollar(amount)
-    Dollar.new(amount)
+    Money.new(amount, 'USD')
   end
 
   def self.franc(amount)
-    Franc.new(amount)
+    Money.new(amount, 'CHF')
   end
 end
