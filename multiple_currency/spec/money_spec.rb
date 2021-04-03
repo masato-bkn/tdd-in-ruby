@@ -3,6 +3,14 @@
 require_relative './../money'
 
 describe 'Money' do
+  describe 'add' do
+    it '5ドル + 5ドル = 10ドル' do
+      five = Money.dollar(5)
+      sum = five.add(Money.dollar(5))
+      expect(sum.equal(Money.dollar(10))).to be_truthy
+    end
+  end
+
   describe 'times' do
     it '5ドル * 2 = 10ドル' do
       five = Money.dollar(5)

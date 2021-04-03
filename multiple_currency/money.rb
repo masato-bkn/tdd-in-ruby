@@ -19,15 +19,25 @@ class Money
   end
 
   def times(multiplier)
-    case currency
-    when 'USD' then Money.dollar(@amount * multiplier)
-    when 'CHF' then Money.franc(@amount * multiplier)
-    end
+    money_factory(@amount * multiplier, currency)
+  end
+
+  def add(added)
+    money_factory(@amount + added.amount, currency)
   end
 
   def equal(money)
     return false unless money.is_a?(Money)
 
     currency == money.currency && amount == money.amount
+  end
+
+  private
+
+  def money_factory(amount, currency)
+    case currency
+    when 'USD' then Money.dollar(amount)
+    when 'CHF' then Money.franc(amount)
+    end
   end
 end
