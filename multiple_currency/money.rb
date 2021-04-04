@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './expressions/sum'
+
 class Money
   attr_reader :amount, :currency
 
@@ -23,7 +25,8 @@ class Money
   end
 
   def add(added)
-    money_factory(@amount + added.amount, currency)
+    sum = Sum.new(self, added)
+    money_factory(sum, currency)
   end
 
   def equal(money)
@@ -34,7 +37,9 @@ class Money
 
   private
 
-  def money_factory(amount, currency)
+  def money_factory(expression, currency)
+    amount = expression.excute
+
     case currency
     when 'USD' then Money.dollar(amount)
     when 'CHF' then Money.franc(amount)

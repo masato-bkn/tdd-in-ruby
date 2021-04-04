@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './../money'
+require_relative './../expressions/sum'
 
 describe 'Money' do
   describe 'add' do
@@ -8,6 +9,14 @@ describe 'Money' do
       five = Money.dollar(5)
       sum = five.add(Money.dollar(5))
       expect(sum.equal(Money.dollar(10))).to be_truthy
+    end
+
+    it 'returns Sum' do
+      five = Money.dollar(5)
+      sum = Sum.new(five, five)
+
+      expect(five.equal(sum.add)).to be_truthy
+      expect(five.equal(sum.added)).to be_truthy
     end
   end
 
