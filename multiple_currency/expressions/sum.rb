@@ -10,8 +10,8 @@ class Sum
     @added = added
   end
 
-  def excute
-    @add.amount + @added.amount
+  def reduce(to)
+    Money.new(@add.amount + @added.amount, to)
   end
 
   private

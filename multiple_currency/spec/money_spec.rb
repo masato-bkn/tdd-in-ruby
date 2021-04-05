@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
+require_relative './../bank'
 require_relative './../money'
 require_relative './../expressions/sum'
 
 describe 'Money' do
   describe 'add' do
     it '5ドル + 5ドル = 10ドル' do
+      bank = Bank.new
+
       five = Money.dollar(5)
-      sum = five.add(Money.dollar(5))
-      expect(sum.equal(Money.dollar(10))).to be_truthy
+      sum = Sum.new(five, five)
+
+      bank.reduce(sum, 'USD')
+      expect(bank.reduce(sum, 'USD').equal(Money.dollar(10))).to be_truthy
     end
 
     it 'returns Sum' do

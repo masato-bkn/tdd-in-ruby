@@ -26,9 +26,7 @@ class Money
 
   def add(added)
     sum = Sum.new(self, added)
-    amount = sum.excute
-
-    money_factory(amount, currency)
+    sum.reduce(currency)
   end
 
   def equal(money)
