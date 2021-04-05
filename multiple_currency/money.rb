@@ -37,9 +37,7 @@ class Money
 
   private
 
-  def money_factory(expression, currency)
-    amount = expression.excute
-
+  def money_factory(_expression, currency)
     case currency
     when 'USD' then Money.dollar(amount)
     when 'CHF' then Money.franc(amount)
