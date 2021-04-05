@@ -26,7 +26,9 @@ class Money
 
   def add(added)
     sum = Sum.new(self, added)
-    money_factory(sum, currency)
+    amount = sum.excute
+
+    money_factory(amount, currency)
   end
 
   def equal(money)
@@ -37,7 +39,7 @@ class Money
 
   private
 
-  def money_factory(_expression, currency)
+  def money_factory(amount, currency)
     case currency
     when 'USD' then Money.dollar(amount)
     when 'CHF' then Money.franc(amount)
