@@ -5,7 +5,7 @@ require_relative './../money'
 require_relative './../expressions/sum'
 
 describe 'Money' do
-  describe 'add' do
+  describe '足し算' do
     it '5ドル + 5ドル = 10ドル' do
       bank = Bank.new
 
@@ -25,7 +25,7 @@ describe 'Money' do
     end
   end
 
-  describe 'times' do
+  describe '掛け算' do
     it '5ドル * 2 = 10ドル' do
       five = Money.dollar(5)
       product = five.times(2)
@@ -33,7 +33,7 @@ describe 'Money' do
     end
   end
 
-  describe 'equals' do
+  describe '等価性' do
     it '5ドル = 5ドル' do
       expect(Money.dollar(5).equal(Money.dollar(5))).to be_truthy
     end
@@ -51,8 +51,8 @@ describe 'Money' do
     end
   end
 
-  describe 'currency' do
-    it do
+  describe '通貨' do
+    it 'ドルの単位はUSD'do
       expect(Money.dollar(5).currency).to eq('USD')
     end
   end
