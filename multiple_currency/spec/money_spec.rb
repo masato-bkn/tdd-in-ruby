@@ -51,6 +51,15 @@ describe 'Money' do
     end
   end
 
+  describe '変換' do
+    xit do
+      bank = Bank.new
+      bank.add_rate("CHF", "USD", 2)
+      result_money = bank.reduce(Money.franc(2), "USD") 
+      exoect(result_money.equals(Money.dollar(1))).to be_truthy
+    end
+  end
+
   describe '通貨' do
     it 'ドルの単位はUSD'do
       expect(Money.dollar(5).currency).to eq('USD')
