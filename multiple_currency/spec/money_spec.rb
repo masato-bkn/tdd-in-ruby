@@ -2,6 +2,7 @@
 
 require_relative './../bank'
 require_relative './../money'
+require_relative './../pair'
 require_relative './../expressions/sum'
 
 describe 'Money' do
@@ -54,15 +55,33 @@ describe 'Money' do
   describe '変換' do
     xit do
       bank = Bank.new
-      bank.add_rate("CHF", "USD", 2)
-      result_money = bank.reduce(Money.franc(2), "USD") 
+      bank.add_rate('CHF', 'USD', 2)
+      result_money = bank.reduce(Money.franc(2), 'USD')
       exoect(result_money.equals(Money.dollar(1))).to be_truthy
     end
   end
 
   describe '通貨' do
-    it 'ドルの単位はUSD'do
+    it 'ドルの単位はUSD' do
       expect(Money.dollar(5).currency).to eq('USD')
     end
+  end
+end
+
+describe 'Pair' do
+  let :pair do
+    Pair.new('USD', 'CHF', 2)
+  end
+
+  it do
+    expect(pair.from).to eq('USD')
+  end
+
+  it do
+    expect(pair.to).to eq('CHF')
+  end
+
+  it do
+    expect(pair.rate).to eq(2)
   end
 end
