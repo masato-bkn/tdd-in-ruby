@@ -85,3 +85,25 @@ describe 'Pair' do
     expect(pair.rate).to eq(2)
   end
 end
+
+describe 'Bank' do
+  let :bank do
+    Bank.new
+  end
+
+  it '為替ペア、レートの追加' do
+    bank.add_rate('USD', 'CHF', 1)
+
+    pair = bank.pairs[0]
+    expect(pair.from).to eq('USD')
+    expect(pair.to).to eq('CHF')
+    expect(pair.rate).to eq(1)
+  end
+
+  it '為替ペア、レートと同じ組み合わせを追加' do
+    bank.add_rate('USD', 'CHF', 1)
+    bank.add_rate('USD', 'CHF', 1)
+
+    expect(bank.pairs.count).to eq(1)
+  end
+end
