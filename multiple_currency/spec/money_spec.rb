@@ -69,20 +69,19 @@ describe 'Money' do
 end
 
 describe 'Pair' do
-  let :pair do
-    Pair.new('USD', 'CHF', 2)
-  end
-
   it do
+    pair = Pair.new('USD', 'CHF', 2)
     expect(pair.from).to eq('USD')
-  end
-
-  it do
     expect(pair.to).to eq('CHF')
+    expect(pair.rate).to eq(2)
   end
 
   it do
-    expect(pair.rate).to eq(2)
+    bank = Bank.new
+    bank.add_rate('USD', 'CHF', 2)
+    result = bank.get_rate('USD', 'CHF')
+
+    expect(result.rate).to eq(2)
   end
 end
 
